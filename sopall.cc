@@ -14,6 +14,7 @@ bool compara(string& paraula, int pos, Matriu& matriu, int x, int y, int dx, int
 }
 int main () {
 	int paraules, files, columnes;
+	bool separa=false;
 	while (cin >> paraules >> files >> columnes) {
 		vector <string> llista(paraules);
 		Matriu matriu(files,Fila(columnes));
@@ -34,12 +35,14 @@ int main () {
 				}
 			}
 		}
-		cout << endl;
+		if (separa) cout << endl;
 		for (int i=0 ; i<files ; i++) {
 			for (int j=0 ; j<columnes ; j++) {
-				cout << matriu[i][j] << " ";
+				if (j!=0) cout << " ";
+				cout << matriu[i][j];
 			}
 			cout << endl;
 		}
+		separa=true;
 	}
 }
