@@ -4,30 +4,42 @@ using namespace std;
 typedef vector<char> Fila;
 typedef vector<Fila> Rectangle;
 void dimensions_minimes(char c, const Rectangle& r, int& fils, int& cols) {
-	int fo=-1;
-	int co=-1;
-	int ff=-1;
-	int cf=-1;
-	for (int i=0 ; i<r.size() and fo<0 ; i++) {
-		for (int j=0 ; j<r[0].size() and fo<0 ; j++) {
-			if (r[i][j]==c) fo=i;
+	int fo=0;
+	int ff=r.size()-1;
+	int co=0;
+	int cf=r[0].size()-1;
+	int i=co;
+	while ( r[fo][i]!=c ) {
+		i++;
+		if ( i>cf) {
+			fo++;
+			i=co;
 		}
 	}
-	for (int i=r.size()-1 ; i>=0 and ff<0 ; i--) {
-		for (int j=r[0].size()-1 ; j>=0 and ff<0 ; j--) {
-			if (r[i][j]==c) ff=i;
+	i=co;
+	while ( r[ff][i]!=c ) {
+		i++;
+		if ( i>cf ) {
+			ff--;
+			i=co;
 		}
 	}
-	for (int j=0 ; j<r[0].size() and co<0 ; j++) {
-		for (int i=fo ; i<=ff and co<0 ; i++) {
-			if (r[i][j]==c) co=j;
+	i=fo;
+	while ( r[i][co]!=c ) {
+		i++;
+		if ( i>ff) {
+			co++;
+			i=fo;
 		}
 	}
-	for (int j=r[0].size()-1 ; j>=0 and cf<0 ; j--) {
-		for (int i=ff ; i>=fo and cf<0 ; i--) {
-			if (r[i][j]==c) cf=j;
+	i=fo;
+	while ( r[i][cf]!=c ) {
+		i++;
+		if ( i>ff) {
+			cf--;
+			i=fo;
 		}
 	}
-	fils = ff-fo+1;
-	cols = cf-co+1;
+	fils=ff-fo+1;
+	cols=cf-co+1;
 }
