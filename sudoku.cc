@@ -34,7 +34,5 @@ int main() {
 			}
 		}
 		cout << (esok?"si":"no") << endl;
-//		if (esok) cout << "si" << endl;
-//		else cout << "no" << endl;
 	}
 }
