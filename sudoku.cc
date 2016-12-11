@@ -25,16 +25,16 @@ int main() {
 			}
 		}
 		bool esok=true;
-		for (int i=0 ; i<9 and esok ; i++) {
-			esok = comprova(matriu,i,0,i,8);
-			if (esok) esok = comprova(matriu,0,i,8,i);
-		}
 		for (int i=0 ; i<9 and esok ; i+=3) {
 			for (int j=0 ; j<9 and esok ; j+=3) {
-				esok = comprova(matriu,i,j,i+2,j+2);
+				int k=i+(j/3);
+				esok = comprova(matriu,k,0,k,8);
+				if (esok) esok = comprova(matriu,0,k,8,k);
+				if (esok) esok = comprova(matriu,i,j,i+2,j+2);
 			}
 		}
-		if (esok) cout << "si" << endl;
-		else cout << "no" << endl;
+		cout << (esok?"si":"no") << endl;
+//		if (esok) cout << "si" << endl;
+//		else cout << "no" << endl;
 	}
 }
